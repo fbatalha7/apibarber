@@ -38,12 +38,24 @@ namespace barberapi.Controllers
         {
             Barber barbeirosDisponiveis = new();
 
+            barbeirosDisponiveis.ListAvailable = barbeirosDisponiveis.DadosListaDisponivel();
             if (City is null)
                 return BadRequest(CityUnavailable());
-            if (barbeirosDisponiveis?.ListAvailable?.FindAll(x => x.City.Equals(City)) is not null)
+
+            List<Barber> region = new();
+
+            foreach (var item in barbeirosDisponiveis.ListAvailable)
+            {
+                if (item.City.Equals(City))
+                {
+                    region.Add(item);
+                }
+            }
+
+            if (region.Count ==0 || region is null)
                 return BadRequest(BarberUnavailable());
 
-            return Ok(barbeirosDisponiveis?.ListAvailable);
+            return Ok(region);
         }
 
         private static string MsgRequiredField(string value) => $"O campo {value} é obrigatório!";
