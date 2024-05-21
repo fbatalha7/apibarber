@@ -7,18 +7,20 @@ namespace barberapi.Models
         public string? Name { get; set; }
         public double Stars { get; set; }
         public string? City { get; set; }
-        public List<Barber>? ListAvailable { get; set;}
+        public List<Barber>? ListAvailable { get; set; }        
         public List<Barber> DadosListaDisponivel()
         {
-            if (ListAvailable?.Count == 0 || ListAvailable is null)
+
+            List<Barber> barbeiros = new List<Barber>();
+            if (barbeiros?.Count == 0 || barbeiros is null)
             {
-                ListAvailable?.Add(new Barber { City = "Coari", Stars = 4.5, Name = "ADMIM TESTE" });
-                ListAvailable?.Add(new Barber { City = "Anori", Stars = 4.5, Name = "ADMIM TESTE" });
-                ListAvailable?.Add(new Barber { City = "Manaus", Stars = 4.5, Name = "ADMIM TESTE" });
+                barbeiros?.Add(new Barber { City = "Coari", Stars = 4.5, Name = "ADMIM TESTE" });
+                barbeiros?.Add(new Barber { City = "Anori", Stars = 4.5, Name = "ADMIM TESTE" });
+                barbeiros?.Add(new Barber { City = "Manaus", Stars = 4.5, Name = "ADMIM TESTE" });
             }
 
-            return ListAvailable;
-        }
+            return barbeiros;
+         }
 
     }
 }
