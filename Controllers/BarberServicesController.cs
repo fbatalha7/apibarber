@@ -1,5 +1,6 @@
 ﻿using barberapi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
 
@@ -15,7 +16,9 @@ namespace barberapi.Controllers
             if (login.Email is null && login.Senha is null)
                 return BadRequest("Usuario ou senha invalidos!");
 
-            return Ok(login.Token);
+            string jsont = JsonConvert.SerializeObject(login);
+
+            return Ok(jsont);
         }
 
         [HttpPost("registeruser")]
@@ -30,7 +33,9 @@ namespace barberapi.Controllers
             if (cadastro.Senha is null)
                 return BadRequest(MsgRequiredField(nameof(cadastro.Senha)));
 
-            return Ok();
+            var token = new{ token = "teste" } ;
+
+            return Ok(JsonConvert.SerializeObject(token));
         }
 
         [HttpGet("barbersavailable")]
@@ -55,7 +60,11 @@ namespace barberapi.Controllers
             if (region.Count ==0 || region is null)
                 return BadRequest(BarberUnavailable());
 
-            return Ok(region);
+
+            string jsont = JsonConvert.SerializeObject(region);
+
+
+            return Ok(jsont);
         }
 
         private static string MsgRequiredField(string value) => $"O campo {value} é obrigatório!";

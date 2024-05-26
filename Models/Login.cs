@@ -15,4 +15,5 @@ namespace barberapi.Models
     {
         public required string NomeUsuario { get; set; }
     }
+
 }
