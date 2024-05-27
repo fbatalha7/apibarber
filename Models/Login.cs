@@ -5,7 +5,7 @@ namespace barberapi.Models
     public class Login
     {
         public required string Email { get; set; }
-        public required string? Senha { get; set; }
+        public required string? Password { get; set; }
         [JsonIgnore]
         public string? Token { get; set; } = "teste";
 

@@ -13,7 +13,7 @@ namespace barberapi.Controllers
         [HttpPost("login")]
         public ActionResult Login([FromBody] Login login)
         {
-            if (login.Email is null && login.Senha is null)
+            if (login.Email is null && login.Password is null)
                 return BadRequest("Usuario ou senha invalidos!");
 
             string jsont = JsonConvert.SerializeObject(login);
@@ -30,8 +30,8 @@ namespace barberapi.Controllers
                 return BadRequest(MsgRequiredField(nameof(cadastro.Email)));
             if (Regex.IsMatch(cadastro.Email, RegexForValideEmail()))
                 return BadRequest($"O Email informado nao e valido!");
-            if (cadastro.Senha is null)
-                return BadRequest(MsgRequiredField(nameof(cadastro.Senha)));
+            if (cadastro.Password is null)
+                return BadRequest(MsgRequiredField(nameof(cadastro.Password)));
 
             var token = new{ token = "teste" } ;
 
