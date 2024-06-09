@@ -46,16 +46,16 @@ namespace barberapi.Controllers
             barbeirosDisponiveis.ListAvailable = barbeirosDisponiveis.DadosListaDisponivel();
             
             if (string.IsNullOrEmpty(City))
-                return Ok(barbeirosDisponiveis.ListAvailable);
+                return BadRequest(CityUnavailable());
 
             List<Barber> region = new();
 
             foreach (var item in barbeirosDisponiveis.ListAvailable)
-                if (item.City.Equals(City))
+                if (item.city.Equals(City))
                     region.Add(item);
 
 
-            if (region.Count == 0 || region is null)
+            if (region.Count ==0 || region is null)
                 return BadRequest(BarberUnavailable());
 
             var jsonreturn = new { data = region, error = 0, loc = City };
