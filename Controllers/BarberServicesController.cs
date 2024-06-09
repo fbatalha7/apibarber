@@ -38,6 +38,18 @@ namespace barberapi.Controllers
             return Ok(JsonConvert.SerializeObject(token));
         }
 
+
+        [HttpPost("token")]
+        public ActionResult TokenUser([FromBody] string tokenuser)
+        {
+            var token = new { token = "teste" };
+
+            if (string.IsNullOrEmpty(tokenuser))
+                token = new { token = "teste2" };
+
+            return Ok(JsonConvert.SerializeObject(token));
+        }
+
         [HttpGet("barbersavailable")]
         public ActionResult<List<Barber>> BarbersAvailable(string City = "")
         {
