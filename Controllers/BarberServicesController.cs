@@ -39,14 +39,14 @@ namespace barberapi.Controllers
         }
 
         [HttpGet("barbersavailable")]
-        public ActionResult<List<Barber>> BarbersAvailable(string City)
+        public ActionResult<List<Barber>> BarbersAvailable(string City = "")
         {
             Barber barbeirosDisponiveis = new();
 
             barbeirosDisponiveis.ListAvailable = barbeirosDisponiveis.DadosListaDisponivel();
             
-            if (City is null)
-                return BadRequest(CityUnavailable());
+            if (string.IsNullOrEmpty(City))
+                return Ok(barbeirosDisponiveis.ListAvailable);
 
             List<Barber> region = new();
 
@@ -55,7 +55,7 @@ namespace barberapi.Controllers
                     region.Add(item);
 
 
-            if (region.Count ==0 || region is null)
+            if (region.Count == 0 || region is null)
                 return BadRequest(BarberUnavailable());
 
             var jsonreturn = new { data = region, error = 0, loc = City };
