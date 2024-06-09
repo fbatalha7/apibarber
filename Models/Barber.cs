@@ -17,8 +17,12 @@ namespace barberapi.Models
             if (barbeiros?.Count == 0 || barbeiros is null)
             {
                 barbeiros?.Add(new Barber { city = "Coari", stars = 4.5, name = "ADMIM TESTE", Id = 1, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
-                barbeiros?.Add(new Barber { city = "Anori", stars = 4.5, name = "ADMIM TESTE", Id = 2, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
-                barbeiros?.Add(new Barber { city = "Manaus", stars = 4.5, name = "ADMIM TESTE", Id = 3, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
+                barbeiros?.Add(new Barber { city = "Sao Paulo", stars = 4.5, name = "ADMIM TESTE", Id = 2, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
+                barbeiros?.Add(new Barber { city = "Manaus", stars = 4.5, name = "Gato de casa", Id = 3, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
+                barbeiros?.Add(new Barber { city = "Manaus", stars = 3.5, name = "Gato brother", Id = 4, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
+                barbeiros?.Add(new Barber { city = "Manaus", stars = 1.5, name = "Gato de rua", Id = 5, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
+                barbeiros?.Add(new Barber { city = "Manaus", stars = 2.5, name = "ADMIM TESTE", Id = 6, avatar = "https://img.freepik.com/fotos-gratis/o-gato-vermelho-ou-branco-eu-no-estudio-branco_155003-13189.jpg?size=626&ext=jpg&ga=GA1.1.235991548.1717966240&semt=sph" });
+
             }
 
             return barbeiros;
