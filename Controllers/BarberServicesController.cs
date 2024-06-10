@@ -91,7 +91,7 @@ namespace barberapi.Controllers
 
             BarberPK services = new()
             {
-                avatar = barbeiro.avatar,
+
                 Id = barbeiro.Id,
                 favorited = true,
                 photos = new()
