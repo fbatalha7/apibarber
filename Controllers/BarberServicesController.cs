@@ -81,7 +81,7 @@ namespace barberapi.Controllers
 
 
         [HttpGet("{id}/Barber")]
-        public ActionResult<List<Barber>> GetBarber(int id)
+        public ActionResult<List<Barber>> GetBarber([FromQuery]int id)
         {
             Barber barbeirosDisponiveis = new();
           
