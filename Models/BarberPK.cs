@@ -7,9 +7,17 @@
         public double stars { get; set; }
 
         public bool favorited  {  get; set; }
-        public List<string> photos { get; set; }
+        public List<Photos> photos { get; set; }
         public List<Services> services { get; set; }
 
+
+    }
+
+    public class Photos
+    {
+        public int Id { get; set; }
+
+        public string url { get; set; }
 
     }
 
