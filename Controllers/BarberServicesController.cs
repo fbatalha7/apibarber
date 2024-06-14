@@ -107,7 +107,7 @@ namespace barberapi.Controllers
             };
 
 
-            var jsonreturn = new { data = barbeiro, error = 0 };
+            var jsonreturn = new { data = barbeiro, services = services, error = 0 };
 
             string jsont = JsonConvert.SerializeObject(jsonreturn);
 
