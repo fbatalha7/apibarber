@@ -3,7 +3,10 @@
     public class BarberPK
     {
         public int Id { get; set; }
-        public bool favorited { get; set; }
+        public string name { get; set; }
+        public double stars { get; set; }
+
+        public bool favorited  {  get; set; }
         public List<string> photos { get; set; }
         public List<Services> services { get; set; }
 
