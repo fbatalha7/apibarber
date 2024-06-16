@@ -110,8 +110,8 @@ namespace barberapi.Controllers
                 },
                 services = new()
                 {
-                    new() { corte = "vaga", price = 12.00},
-                    new() { corte = "123", price = 12.00}
+                    new() { name = "Masculino", price = 12.00},
+                    new() { name = "infantil", price = 12.00}
                 }
 
             };
