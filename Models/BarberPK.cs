@@ -31,8 +31,8 @@
 
     public class Available
     {
-        public string Date { get; set; } 
-        public string Hours { get; set; }
+        public string date { get; set; } 
+        public string hours { get; set; }
     }
 
    
