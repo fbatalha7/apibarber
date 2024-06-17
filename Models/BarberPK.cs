@@ -9,7 +9,7 @@
         public bool favorited  {  get; set; }
         public List<Photos> photos { get; set; }
         public List<Services> services { get; set; }
-        public List<DateTime> available { get; set; }   
+        public List<Available> available { get; set; }   
 
 
     }
@@ -27,6 +27,12 @@
         public string name { get; set; }
         public double price { get; set; }
 
+    }
+
+    public class Available
+    {
+        public string Date { get; set; } 
+        public string Hours { get; set; }
     }
 
    

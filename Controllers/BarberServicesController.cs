@@ -1,6 +1,7 @@
 ﻿using barberapi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
@@ -120,7 +121,6 @@ namespace barberapi.Controllers
                     new() { name = "infantil", price = 12.00}
                 },
                 available = days
-
             };
 
 
@@ -132,9 +132,9 @@ namespace barberapi.Controllers
             return Ok(jsont);
         }
 
-        private static List<DateTime> GetDaysOfYear(int year)
+        public static List<Available> GetDaysOfYear(int year)
         {
-            List<DateTime> days = new List<DateTime>();
+            List<Available> days = new List<Available>();
 
             for (int month = 1; month <= 12; month++)
             {
@@ -142,7 +142,12 @@ namespace barberapi.Controllers
 
                 for (int day = 1; day <= daysInMonth; day++)
                 {
-                    days.Add(new DateTime(year, month, day));
+                    DateTime dateTime = new DateTime(year, month, day);
+                    days.Add(new Available
+                    {
+                        Date = dateTime.ToString("dd-MM-yyyy"),
+                        Hours = dateTime.ToString("HH:mm") // Inicializa a hora como 00:00
+                    });
                 }
             }
 
