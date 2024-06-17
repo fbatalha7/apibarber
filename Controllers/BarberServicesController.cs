@@ -145,8 +145,8 @@ namespace barberapi.Controllers
                     DateTime dateTime = new DateTime(year, month, day);
                     days.Add(new Available
                     {
-                        Date = dateTime.ToString("dd-MM-yyyy"),
-                        Hours = dateTime.ToString("HH:mm") // Inicializa a hora como 00:00
+                         date = dateTime.ToString("dd-MM-yyyy"),
+                         hours = dateTime.ToString("HH:mm") // Inicializa a hora como 00:00
                     });
                 }
             }
