@@ -93,6 +93,8 @@ namespace barberapi.Controllers
 
             var barbeiro = barbeirosDisponiveis.ListAvailable.Find(x => x.Id == id);
 
+            var days = GetDaysOfYear(DateTime.Now.Year);
+
             BarberPK services = new()
             {
                 Id = id,
@@ -117,14 +119,7 @@ namespace barberapi.Controllers
                     new() { name = "Masculino", price = 12.00},
                     new() { name = "infantil", price = 12.00}
                 },
-                available = new()
-                {
-                   DateTime.Now,
-                   DateTime.Now.AddHours(-4),
-                   DateTime.Now.AddHours(-3),
-                   DateTime.Now.AddHours(-2),
-                   DateTime.Now.AddHours(-1),
-                }
+                available = days
 
             };
 
@@ -137,8 +132,22 @@ namespace barberapi.Controllers
             return Ok(jsont);
         }
 
+        private static List<DateTime> GetDaysOfYear(int year)
+        {
+            List<DateTime> days = new List<DateTime>();
 
+            for (int month = 1; month <= 12; month++)
+            {
+                int daysInMonth = DateTime.DaysInMonth(year, month);
 
+                for (int day = 1; day <= daysInMonth; day++)
+                {
+                    days.Add(new DateTime(year, month, day));
+                }
+            }
+
+            return days;
+        }
         private static string MsgRequiredField(string value) => $"O campo {value} é obrigatório!";
         private static string RegexForValideEmail() => @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
         private static string BarberUnavailable() => "Nao ha barbeiros indiponiveis para sua regiao";
