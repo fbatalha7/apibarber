@@ -94,7 +94,7 @@ namespace barberapi.Controllers
 
             var barbeiro = barbeirosDisponiveis.ListAvailable.Find(x => x.Id == id);
 
-            var days = GetDaysOfYear(DateTime.Now.Year);
+            var days = GetDaysOfYearWithHours(DateTime.Now.Year);
 
             BarberPK services = new()
             {
@@ -132,9 +132,9 @@ namespace barberapi.Controllers
             return Ok(jsont);
         }
 
-        public static List<Available> GetDaysOfYear(int year)
+        public static List<Available> GetDaysOfYearWithHours(int year)
         {
-            List<Available> days = new List<Available>();
+            List<Available> dateTimeList = new List<Available>();
 
             for (int month = 1; month <= 12; month++)
             {
@@ -142,17 +142,32 @@ namespace barberapi.Controllers
 
                 for (int day = 1; day <= daysInMonth; day++)
                 {
-                    DateTime dateTime = new DateTime(year, month, day);
-                    days.Add(new Available
+                    DateTime currentDay = new DateTime(year, month, day);
+
+                    for (int hour = 9; hour <= 17; hour++) // 9 AM to 5 PM
                     {
-                         date = dateTime.ToString("dd-MM-yyyy"),
-                         hours = dateTime.ToString("HH:mm") // Inicializa a hora como 00:00
-                    });
+                        dateTimeList.Add(new Available
+                        {
+                            date = currentDay.ToString("dd-MM-yyyy"),
+                            hours = new DateTime(year, month, day, hour, 0, 0).ToString("HH:mm")
+                        });
+
+                        if (hour != 17) // Add 30 minutes slot except for the last hour
+                        {
+                            dateTimeList.Add(new Available
+                            {
+                                date = currentDay.ToString("dd-MM-yyyy"),
+                                hours = new DateTime(year, month, day, hour, 30, 0).ToString("HH:mm")
+                            });
+                        }
+                    }
                 }
             }
 
-            return days;
+            return dateTimeList;
         }
+
+
         private static string MsgRequiredField(string value) => $"O campo {value} é obrigatório!";
         private static string RegexForValideEmail() => @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
         private static string BarberUnavailable() => "Nao ha barbeiros indiponiveis para sua regiao";
