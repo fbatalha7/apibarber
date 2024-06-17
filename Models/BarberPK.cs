@@ -9,6 +9,7 @@
         public bool favorited  {  get; set; }
         public List<Photos> photos { get; set; }
         public List<Services> services { get; set; }
+        public List<DateTime> available { get; set; }   
 
 
     }
@@ -27,4 +28,6 @@
         public double price { get; set; }
 
     }
+
+   
 }

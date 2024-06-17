@@ -22,6 +22,12 @@ namespace barberapi.Controllers
             return Ok(jsont);
         }
 
+        [HttpPost("logout")]
+        public ActionResult logout()
+        {
+            return Ok(string.Empty);
+        }
+
         [HttpPost("registeruser")]
         public ActionResult RegisterUser([FromBody] Cadastro cadastro)
         {
@@ -38,7 +44,6 @@ namespace barberapi.Controllers
 
             return Ok(JsonConvert.SerializeObject(token));
         }
-
 
         [HttpPost("token")]
         public ActionResult TokenUser([FromBody] string tokenuser)
@@ -79,7 +84,6 @@ namespace barberapi.Controllers
             return Ok(jsont);
         }
 
-
         [HttpGet("Barber")]
         public ActionResult<List<Barber>> GetBarber([FromQuery] int id)
         {
@@ -112,6 +116,14 @@ namespace barberapi.Controllers
                 {
                     new() { name = "Masculino", price = 12.00},
                     new() { name = "infantil", price = 12.00}
+                },
+                available = new()
+                {
+                   DateTime.Now,
+                   DateTime.Now.AddHours(-4),
+                   DateTime.Now.AddHours(-3),
+                   DateTime.Now.AddHours(-2),
+                   DateTime.Now.AddHours(-1),
                 }
 
             };
@@ -124,6 +136,8 @@ namespace barberapi.Controllers
 
             return Ok(jsont);
         }
+
+
 
         private static string MsgRequiredField(string value) => $"O campo {value} é obrigatório!";
         private static string RegexForValideEmail() => @"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
